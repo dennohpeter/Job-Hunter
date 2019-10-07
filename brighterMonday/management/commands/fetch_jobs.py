@@ -9,8 +9,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         sched = BlockingScheduler()
         # runs `crawler.fetch_jobs()` function every day at interval of 6 hours
-        time = 6
-        @sched.scheduled_job('interval', hours=time)
+        time = 1
+        @sched.scheduled_job('interval', minutes=time)
         def fetch_jobs():
             print('------------------starting cron job --------------------')
             crawler = Crawler()
