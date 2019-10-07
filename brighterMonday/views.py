@@ -1,4 +1,3 @@
-import pprint
 from django.http import HttpResponse
 
 def index(request):

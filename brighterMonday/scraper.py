@@ -2,8 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 from django.conf import settings
 from brighterMonday.updater import Update_Jobs
-import pprint
-
 
 class Crawler:
     BRIGHTER_MONDAY_URL = settings.BRIGHTER_MONDAY_URL
@@ -33,7 +31,6 @@ class Crawler:
             all_jobs['total_jobs'] += jobs_from_other_pages['total_jobs']
             all_jobs['jobs'] += jobs_from_other_pages['jobs']
         print('--------------done getting jobs--------------------')
-        pprint.pprint(all_jobs)
         # calling update jobs class which updates jobs in the models
         update_jobs = Update_Jobs(all_jobs)
         update_jobs.update_models()
