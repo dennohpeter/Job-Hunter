@@ -1,2 +1,2 @@
 #  running cron job
-clock: python clock.py
+clock: python manage.py fetch_jobs
