@@ -17,6 +17,11 @@ BRIGHTER_MONDAY_URL = os.getenv('BRIGHTER_MONDAY_URL')
 DATABASE_NAME = os.getenv('DATABASE_NAME')
 DB_USER = os.getenv('DB_USER')
 DATABASE_PASSWORD = os.getenv('DATABASE_PASSWORD')
+API_KEY = os.getenv('API_KEY')
+PROJECT_ID = os.getenv('PROJECT_ID')
+CONSUMER_SECRET = os.getenv('CONSUMER_SECRET')
+BASE_URL = os.getenv('BASE_URL')
+PHONE_NUMBER = os.getenv('PHONE_NUMBER')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
