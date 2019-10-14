@@ -13,6 +13,7 @@ class Update_Jobs:
                 description=job['job_result_content'],
                 defaults={
                     'title': job['job_result_title'],
+                    'job_function': job['job_function'],
                     'description': job["job_result_content"],
                     'company_logo': job['job_result_card_icon'],
                     'company_logo_alt': job['job_result_card_icon_alt'],
@@ -22,6 +23,10 @@ class Update_Jobs:
                     'more_info_link': job['job_result_more_info_link'],
                     'salary': job['job_result_salary'],
                     'job_type': job['job_result_type'],
-                    'first_seen': job['time_posted']
+                    'first_seen': job['time_posted'],
+                    'summary_title': job['summary_title'],
+                    'summary': job['summary'],
+                    'description_title': job['description_title'],
+                    'requirements': job['requirements']
                 })
         print('------------------done updating jobs------------------')

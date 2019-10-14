@@ -6,8 +6,8 @@ class JobSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Job
-        fields = ('title', 'description', 'company_logo', 'company_logo_alt', 'category', 'location',
-                  'employer', 'more_info_link', 'salary', 'job_type', 'first_seen', 'created_at')
+        fields = ('title', 'job_function', 'description', 'company_logo', 'company_logo_alt', 'category', 'location',
+                  'employer', 'more_info_link', 'salary', 'job_type', 'first_seen', 'created_at', 'summary_title', 'summary', 'description_title', 'requirements')
 
 
 class JobViewSet(viewsets.ModelViewSet):
