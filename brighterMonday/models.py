@@ -10,7 +10,6 @@ class Job(models.Model):
     category = models.CharField(max_length=50)
     location =models.CharField(max_length=50)
     employer = models.CharField(max_length=50)
-    more_info_link = models.URLField(max_length=200)
     salary = models.CharField(max_length=50)
     job_type = models.CharField(max_length=50)
     first_seen = models.CharField(max_length=50)

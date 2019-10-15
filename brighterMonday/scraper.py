@@ -65,8 +65,6 @@ class Crawler:
                 print('\n------------------error----------------------\n%s' % err)
 
             job_result_body = each_job.find(class_='search-result__body')
-            job_result_image_container = job_result_body.find(
-                class_='search-result__image-container').getText().strip()
             job_result_more_info_link = job_result_body.find(
                 'a', class_='metrics-apply-now')['href']
             job_result_card_icon = None
@@ -82,7 +80,8 @@ class Crawler:
 
             job_result_content = job_result_body.find(
                 class_='search-result__content').getText().strip()
-
+            (summary_title, summary, description_title,
+             requirements) = self.more_info(job_result_more_info_link)
             res = {
                 'job_result_title': job_result_title,
                 'job_result_meta': job_result_meta,
@@ -90,17 +89,35 @@ class Crawler:
                 'job_result_type': job_result_type,
                 'job_result_salary': job_result_salary, 
                 'job_function': job_result_function,
-                'job_result_image_container': job_result_image_container, 
                 'time_posted': time_posted,
                 'job_result_card_icon': job_result_card_icon,
                 'job_result_card_icon_alt': job_result_card_icon_alt,
                 'job_result_content': job_result_content,
-                'job_result_more_info_link': job_result_more_info_link,
-                "summary_title": "",
-                "summary": "",
-                "description_title": "",
-                "requirements": "",
+                "summary_title": summary_title,
+                "summary": summary,
+                "description_title": description_title,
+                "requirements": requirements
             }
             jobs_list['jobs'].append(res)
             jobs_list['total_jobs'] += 1
         return jobs_list
+
+    def more_info(self, url):
+        more_info_soup = self.get_page(url)
+        search_main__content = more_info_soup.find("article", class_="job__details")
+        more_info_card = search_main__content.find_all('div',
+            class_='customer-card card--compact')
+        print("---------- job summary------------------")
+        card_summary = more_info_card[0].getText().strip().split('\n')
+        card_summary = [each.strip()
+                    for each in card_summary if each.strip() != '']
+        summary_title = card_summary[0]
+        summary = "\n".join(card_summary[1:])
+        print("---------- job description------------------")
+        description = more_info_card[1].getText().strip().split('\n')
+        description = [each.strip()
+                        for each in description if each.strip() != '']
+        description_title = description[0]
+        requirements = "\n".join(description[1:])
+
+        return (summary_title, summary, description_title, requirements)
