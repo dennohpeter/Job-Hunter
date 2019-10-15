@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 ('location', models.CharField(max_length=50)),
                 ('employer', models.CharField(max_length=50)),
                 ('salary', models.CharField(max_length=50)),
-                ('job_type', models.CharField(max_length=50)),
+                ('job_type', models.CharField(ma    x_length=50)),
                 ('first_seen', models.CharField(max_length=50)),
                 ('created_at', models.DateTimeField(default=django.utils.timezone.now)),
                 ('summary_title', models.CharField(max_length=100, null=True)),
