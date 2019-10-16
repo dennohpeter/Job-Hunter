@@ -13,7 +13,7 @@ class Command(BaseCommand):
         sched = BlockingScheduler()
         sms = SMS()
         # runs `crawler.fetch_jobs()` function every day at interval of 6 hours
-        time = 15
+        time = 20
         started_msg = "Started Fetching jobs at %s" % timezone.now()
         done_msg = "Done Fetching jobs at %s" % timezone.now()
         @sched.scheduled_job('interval', minutes=time)
