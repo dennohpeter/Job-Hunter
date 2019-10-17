@@ -1,4 +1,4 @@
-import requests
+import requests, pprint
 from bs4 import BeautifulSoup
 from django.conf import settings
 from brighterMonday.updater import Update_Jobs
@@ -32,6 +32,7 @@ class Crawler:
             all_jobs['jobs'] += jobs_from_other_pages['jobs']
         print('--------------done getting jobs--------------------')
         # calling update jobs class which updates jobs in the models
+        pprint.pprint(all_jobs)
         update_jobs = Update_Jobs(all_jobs)
         update_jobs.update_models()
 
@@ -108,13 +109,13 @@ class Crawler:
         more_info_card = search_main__content.find_all('div',
             class_='customer-card card--compact')
         print("---------- job summary------------------")
-        card_summary = more_info_card[0].getText().strip().split('\n')
+        card_summary = more_info_card[0].getText('\n').strip().split('\n')
         card_summary = [each.strip()
                     for each in card_summary if each.strip() != '']
         summary_title = card_summary[0]
         summary = "\n".join(card_summary[1:])
         print("---------- job description------------------")
-        description = more_info_card[1].getText().strip().split('\n')
+        description = more_info_card[1].getText('\n').strip().split('\n')
         description = [each.strip()
                         for each in description if each.strip() != '']
         description_title = description[0]
