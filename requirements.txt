@@ -6,7 +6,7 @@ bs4==0.0.1
 certifi==2019.9.11
 chardet==3.0.4
 dj-database-url==0.5.0
-Django==2.2.8
+Django==2.2.13
 djangorestframework==3.10.3
 gunicorn==19.9.0
 idna==2.8
